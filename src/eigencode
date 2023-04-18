@@ -1,0 +1,13 @@
+insert into remotecontroller(productname, productstockamount, productsoldamount, compatiblewithtelevision, televisionid)
+values ('Philips-remote', '40', '26', 'Philips', '3');
+
+select * from television_remotecontroller
+
+insert into television_remotecontroller(televisionid, remotecontrollerid)
+values ('1','1'), ('2','2'), ('3','3');
+
+--De bovenstaande query selecteert de productnamen van televisies en afstandsbedieningen en voegt deze samen op basis van de overeenkomstige televisies of compatibiliteit van de afstandsbediening. De televisienamen worden weergegeven in de kolom "television_name" en de afstandsbedieningsnamen worden weergegeven in de kolom "remote_name".
+SELECT television.productname AS television_name, remotecontroller.productname AS remote_name
+FROM television
+JOIN remotecontroller
+ON television.productid = remotecontroller.televisionid OR remotecontroller.compatiblewithtelevision = television.productname;
